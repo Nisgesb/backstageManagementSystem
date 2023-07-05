@@ -1,5 +1,7 @@
-<template>app</template>
+<template>
+  <router-view></router-view>
+</template>
 
 <script setup></script>
 
-<style scoped></style>
+<style scoped lang="scss"></style>
