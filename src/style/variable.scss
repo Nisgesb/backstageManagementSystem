@@ -1,1 +1,11 @@
-$color: red;
+// 一、layout页面
+// 1、左侧菜单
+// 未折叠宽度
+$base-menu-width: 260px;
+// 折叠宽度
+$fold-menu-width: 73px;
+// 背景
+$base-menu-background: #001529;
+
+// 2、顶部导航
+$base-tabber-height: 60px;

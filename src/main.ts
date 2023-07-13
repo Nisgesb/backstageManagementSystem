@@ -9,6 +9,7 @@ import zhCn from "element-plus/dist/locale/zh-cn.mjs";
 import "virtual:svg-icons-register";
 import globalComponentPlugin from "@/globalComponentPlugin";
 import router from "./router";
+import pinia from "./store";
 
 const app = createApp(App);
 app.use(ElementPlus, {
@@ -16,5 +17,6 @@ app.use(ElementPlus, {
 });
 app.use(globalComponentPlugin);
 app.use(router);
+app.use(pinia);
 
 app.mount("#app");
