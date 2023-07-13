@@ -1,1 +1,20 @@
 @import "./reset.scss";
+
+// 全局滚动条样式
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: $base-menu-background;
+}
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.el-menu--collapse .el-sub-menu__title .el-sub-menu__icon-arrow {
+  display: none !important;
+}
+.el-icon {
+  vertical-align: bottom
+}
