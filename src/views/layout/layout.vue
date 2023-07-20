@@ -11,7 +11,7 @@
       <el-main id="layout_main">
         <router-view v-slot="{ Component }">
           <transition name="fade">
-            <component :is="Component"></component>
+            <component :is="Component" v-if="!destroyAssembly"></component>
           </transition>
         </router-view>
       </el-main>
@@ -25,9 +25,20 @@
   import topBar from "@/views/layout/topBar.vue";
   import useUserStore from "@/store/modules/user.ts";
   import { useSettingStore } from "@/store/modules/setting.ts";
+  import { watch, ref, nextTick } from "vue";
 
   const userSotre = useUserStore();
   const settingStore = useSettingStore();
+  let destroyAssembly = ref(false);
+  watch(
+    () => settingStore.refreshFlag,
+    () => {
+      destroyAssembly.value = true;
+      nextTick(() => {
+        destroyAssembly.value = false;
+      });
+    }
+  );
 </script>
 
 <style scoped lang="scss">

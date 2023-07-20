@@ -124,7 +124,7 @@ export const routes = [
   },
   {
     path: "/screen",
-    component: () => import("@/views/layout/screen/screen.vue"),
+    component: () => import("@/views/screen/screen.vue"),
     meta: {
       showNavbar: true,
       title: "数据大屏",

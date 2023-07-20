@@ -15,12 +15,16 @@
     <div class="rightBtn">
       <!-- 圆形按钮 -->
       <div class="circleBtn">
-        <round-button iconName="Refresh"></round-button>
-        <round-button iconName="FullScreen"></round-button>
+        <round-button iconName="Refresh" @click="clickRefresh"></round-button>
+        <round-button iconName="FullScreen" @click="clickFullScreen">
+        </round-button>
         <round-button iconName="Setting"></round-button>
       </div>
       <!-- 头像信息 -->
-      <avatar></avatar>
+      <avatar
+        :avatarsrc="userStore.userInfo.avatar"
+        :username="userStore.userInfo.username"
+      ></avatar>
     </div>
   </div>
 </template>
@@ -28,12 +32,25 @@
 <script setup>
   import roundButton from "@/components/topBar/roundButton.vue";
   import { useSettingStore } from "@/store/modules/setting.ts";
+  import useUserStore from "@/store/modules/user.ts";
   import showCurrentLocation from "@/components/topBar/showCurrentLocation.vue";
   import avatar from "@/components/topBar/avatar.vue";
   const settingStore = useSettingStore();
+  const userStore = useUserStore();
+  console.log(userStore.userInfo);
 
   const clickFold = () => {
     settingStore.clickFold();
+  };
+  const clickRefresh = () => {
+    settingStore.refreshFlag = !settingStore.refreshFlag;
+  };
+  const clickFullScreen = () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      document.documentElement.requestFullscreen();
+    }
   };
 </script>
 
@@ -57,6 +74,7 @@
     }
 
     .collapseBar {
+      cursor: pointer;
       margin-right: 15px;
     }
   }
